@@ -1,4 +1,4 @@
-FROM nlknguyen/alpine-mpich:onbuild
+FROM lzhouarch/mxnet-rpi-mpi:onbuild
 
 # # ------------------------------------------------------------
 # # Build MPI project

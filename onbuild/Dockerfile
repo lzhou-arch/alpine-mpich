@@ -1,8 +1,9 @@
-FROM nlknguyen/alpine-mpich:latest
+FROM lzhouarch/mxnet-rpi-mpi:latest
 
 USER root
 
-RUN apk add --no-cache openssh 
+RUN apt-get install -y openssh-server
+RUN apt-get install -y net-tools
 
 # # ------------------------------------------------------------
 # # Utility shell scripts
@@ -48,7 +49,13 @@ RUN  sed -i "s/#PasswordAuthentication.*/PasswordAuthentication no/g" /etc/ssh/s
   && sed -i "s/#AuthorizedKeysFile/AuthorizedKeysFile/g" /etc/ssh/sshd_config
  
 # Unlock non-password USER to enable SSH login
-RUN passwd -u ${USER}
+# However, running the passwd -u command does not unlock the password because by default
+# passwd refuses to create a passwordless account.
+# passwd: unlocking the password would result in a passwordless account.
+# You should set a password with usermod -p to unlock the password of this account.
+# The alternative is to set an impossible password for the user:
+# usermod -p "*"  USER
+# RUN passwd -u ${USER}
 
 # Set up user's public and private keys
 ENV SSHDIR ${USER_HOME}/.ssh
