@@ -33,7 +33,7 @@ PROJECT_NAME="rpi-mpi"
 NETWORK_NAME="mpi-network"
 NETWORK_SUBNET="10.0.9.0/24"
 SSH_ADDR="192.168.1.31"
-SSH_PORT="2222"
+SSH_PORT="22"
 
 # Include config variables if the file exists
 # shellcheck disable=SC1091
