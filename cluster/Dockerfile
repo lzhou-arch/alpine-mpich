@@ -1,5 +1,10 @@
 FROM lzhouarch/mxnet-rpi-mpi:onbuild
 
+USER root
+RUN mkdir -p /var/run/sshd
+
+USER ${USER}
+
 # # ------------------------------------------------------------
 # # Build MPI project
 # # ------------------------------------------------------------
