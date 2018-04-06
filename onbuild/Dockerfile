@@ -2,8 +2,11 @@ FROM lzhouarch/mxnet-rpi:latest
 
 USER root
 
-RUN apt-get install -y openssh-server
-RUN apt-get install -y net-tools
+RUN apt-get install -y openssh-server && \
+    apt-get install -y net-tools && \
+    apt-get install -y rsync
+
+RUN mkdir /tmp/mxnet
 
 # # ------------------------------------------------------------
 # # Utility shell scripts
