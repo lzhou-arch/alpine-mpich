@@ -1,4 +1,4 @@
-FROM lzhouarch/mxnet-rpi_python:latest
+FROM lzhouarch/mxnet-rpi:latest
 
 RUN apt-get update && apt-get upgrade -y
 
@@ -37,23 +37,22 @@ WORKDIR /
 RUN rm -rf /tmp/*
 
 
-#### ADD DEFAULT USER ####
+# #### ADD DEFAULT USER ####
 ARG USER=mpi
 ENV USER ${USER}
-RUN adduser --disabled-password ${USER} \
-      && echo "${USER}   ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
-
-ENV USER_HOME /home/${USER}
-RUN chown -R ${USER}:${USER} ${USER_HOME}
-
-#### CREATE WORKING DIRECTORY FOR USER ####
-ARG WORKDIR=/project
+# RUN adduser --disabled-password ${USER} \
+#       && echo "${USER}   ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+#
+# ENV USER_HOME /home/${USER}
+# RUN chown -R ${USER}:${USER} ${USER_HOME}
+#
+# #### CREATE WORKING DIRECTORY FOR USER ####
+ARG WORKDIR=${USER_HOME}/project
 ENV WORKDIR ${WORKDIR}
 RUN mkdir ${WORKDIR}
 RUN chown -R ${USER}:${USER} ${WORKDIR}
 
 WORKDIR ${WORKDIR}
 USER ${USER}
-
 
 CMD ["/bin/ash"]
