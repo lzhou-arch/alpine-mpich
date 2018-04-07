@@ -4,7 +4,9 @@ USER root
 
 RUN apt-get install -y openssh-server && \
     apt-get install -y net-tools && \
-    apt-get install -y rsync
+    apt-get install -y rsync && \
+    apt-get install -y screen
+
 
 RUN mkdir /tmp/mxnet
 

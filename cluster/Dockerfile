@@ -1,4 +1,4 @@
-FROM lzhouarch/mxnet_py-rpi:mpi
+FROM lzhouarch/mxnet-rpi:mpi
 
 CMD sh -c 'sudo ln -s /dev/null /dev/raw1394'; bash
 
@@ -15,7 +15,9 @@ CMD sh -c 'sudo ln -s /dev/null /dev/raw1394'; bash
 # the current working directory in this Docker image
 COPY project/ .
 COPY dist_run.sh .
+COPY local_run.sh .
 RUN sudo chmod +x dist_run.sh
+RUN sudo chmod +x local_run.sh
 
 # Normal build command
 RUN mpicc -o mpi_hello_world mpi_hello_world.c
