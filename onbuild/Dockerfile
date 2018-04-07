@@ -1,4 +1,4 @@
-FROM lzhouarch/mxnet-rpi:latest
+FROM lzhouarch/mxnet-rpi:base
 
 USER root
 

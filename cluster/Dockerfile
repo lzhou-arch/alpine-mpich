@@ -14,8 +14,6 @@ CMD sh -c 'sudo ln -s /dev/null /dev/raw1394'; bash
 # Copy the content of `project` directory in the host machine to 
 # the current working directory in this Docker image
 COPY project/ .
-COPY dist_run.sh .
-COPY local_run.sh .
 RUN sudo chmod +x dist_run.sh
 RUN sudo chmod +x local_run.sh
 
