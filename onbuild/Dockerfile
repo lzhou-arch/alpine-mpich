@@ -8,6 +8,7 @@ RUN apt-get install -y openssh-server && \
     apt-get install -y screen
 
 
+RUN mkdir -p /var/run/sshd
 RUN mkdir /tmp/mxnet
 
 # # ------------------------------------------------------------
@@ -73,6 +74,10 @@ RUN echo "StrictHostKeyChecking no" > ${SSHDIR}/config
 # Switch back to default user
 USER ${USER}
 
+RUN cd ${USER_HOME}/mxnet/python && \
+    pip install --upgrade pip && \
+    sudo pip install -e . && \
+    sudo ln -s /dev/null /dev/raw1394
 
 # # ------------------------------------------------------------
 # # ONBUILD (require ssh/ directory in the build context)
