@@ -1,4 +1,4 @@
-FROM lzhouarch/mxnet-rpi:mpi
+FROM lzhouarch/mxnet-rpi:onbuild
 
 CMD sh -c 'sudo ln -s /dev/null /dev/raw1394'; bash
 

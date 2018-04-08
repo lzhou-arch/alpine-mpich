@@ -28,7 +28,7 @@ set -e
 
 # Default values if providing empty
 SIZE=2
-IMAGE_TAG="lzhouarch/mxnet-rpi:proj"
+IMAGE_TAG="lzhouarch/mxnet-rpi:cluster"
 PROJECT_NAME="rpi-mpi"
 NETWORK_NAME="mpi-network"
 NETWORK_SUBNET="10.0.9.0/24"
